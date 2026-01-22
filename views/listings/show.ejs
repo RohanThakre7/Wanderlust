@@ -1,0 +1,81 @@
+
+<%layout ('./layouts/boilerplate') %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card border-0 shadow-none bg-transparent">
+
+                <!-- Image -->
+                <img 
+                    src="<%= listing.image && listing.image.path ? (listing.image.path.startsWith('http') ? listing.image.path : '/' + listing.image.path) : 'https://via.placeholder.com/800' %>" 
+                    class="card-img-top rounded-0"
+                    alt="Listing image"
+                >
+
+                <div class="card-body px-0">
+
+                    <!-- Title -->
+                    <h3 class="fw-bold">
+                        <%= listing.title %>
+                        
+                    </h3>
+                    <p class="text-muted mb-1">
+                    <% if (listing.owner) { %>
+                         <strong>Owner:</strong> <%= listing.owner.username %>
+                              <% } else { %>
+                           <strong>Owner:</strong> Not available
+                      <% } %>
+                    </p>
+
+
+
+
+                    <!-- Location -->
+                    <p class="text-muted mb-1">
+                        <strong>Location:</strong> <%= listing.location %>
+                    </p>
+
+                    <!-- Country -->
+                    <p class="text-muted mb-1">
+                        <strong>Country:</strong> <%= listing.country %>
+                    </p>
+
+                    <!-- Price -->
+                    <p class="fw-semibold text-danger mb-3">
+                        ₹ <%= listing.price %>
+                    </p>
+
+                    <!-- Description -->
+                    <p>
+                        <%= listing.description %>
+                    </p>
+
+                    <!-- Actions -->
+                     <%if (currentUser && listing.owner && currentUser._id.equals(listing.owner._id)) { %>
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="/listings/<%= listing._id %>/edit" 
+                           class="btn btn-outline-secondary btn-sm">
+                            Edit
+                        </a>
+
+                        <form action="/listings/<%=listing._id%>/delete?_method=DELETE" method="POST">
+                            <button class="btn btn-outline-danger btn-sm">
+                                Delete
+                            </button>
+                        </form>
+
+                    </div>
+                    <% } %>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <%- include('../reviews/review.ejs') %>
+
+</body>
+</html>

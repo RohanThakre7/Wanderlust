@@ -1,0 +1,75 @@
+.navbar {
+    height: 5rem;
+}
+.wanderIcon{
+    width: 3rem;
+    color: rgb(165, 42, 120) !important;
+}
+.custom-footer {
+    background-color: #1f1f24 !important;
+}
+
+.footer-title {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.footer-text {
+    color: #c9c3cc !important;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #c9c3cc !important;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: rgb(165, 42, 120) !important;
+}
+
+.footer-icon {
+    color: #c9c3cc !important;
+    font-size: 1.3rem;
+}
+
+.footer-icon:hover {
+    color: rgb(165, 42, 120) !important;
+}
+
+.footer-divider {
+    border-color: rgba(165, 42, 120, 0.4) !important;
+}
+
+.footer-copy {
+    color: #c9c3cc !important;
+    font-size: 0.85rem;
+}
+.card {
+    margin-bottom: 2rem;
+}
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+
+.btn-create {
+    background-color: rgb(165, 42, 120) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.btn-create:hover {
+    background-color: rgb(135, 32, 100) !important;
+    color: #ffffff !important;
+}
+
+.btn-create:focus,
+.btn-create:active {
+    box-shadow: 0 0 0 0.2rem rgba(165, 42, 120, 0.4) !important;
+}
+

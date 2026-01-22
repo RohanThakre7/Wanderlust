@@ -1,0 +1,71 @@
+<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary border-bottom">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">
+      <i class="fa-regular fa-compass wanderIcon"></i>
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Left Links -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">All Listings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">New</a>
+        </li>
+      </ul>
+      <form class="d-flex ms-auto" role="search" action="/listings" method="GET">
+  <input
+    class="form-control me-2"
+    type="search"
+    name="q"
+    placeholder="Search destinations"
+    aria-label="Search"
+  >
+  <button
+    class="btn text-white"
+    style="background-color: rgb(165, 42, 120);"
+    type="submit"
+  >
+    Search
+  </button>
+</form>
+
+
+      <!-- Right Auth Links -->
+      <ul class="navbar-nav">
+
+        <% if (!currentUser) { %>
+          <!-- Not Logged In -->
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        <% } else { %>
+          <!-- Logged In -->
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% } %>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

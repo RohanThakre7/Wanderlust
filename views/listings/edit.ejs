@@ -1,0 +1,55 @@
+
+<%layout ('/layouts/boilerplate') %>
+<body>
+    <h1>Edit Listing</h1>
+    
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" value="<%= listing.title %>" id="title" name="listing[title]" required>
+        <br><br>
+
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" class="form-control" name="listing[description]" required><%= listing.description %></textarea>
+        <br><br>
+        
+        <% if (listing.image && listing.image.path) { %>
+  <div class="mb-3">
+    <label class="form-label">Current Image</label>
+    <img
+      src="<%= listing.image.path.startsWith('http') ? listing.image.path : '/' + listing.image.path %>"
+      class="img-fluid rounded w-100"
+      style="max-height: 300px; object-fit: cover;"
+      alt="Current listing image"
+    >
+  </div>
+<% } %>
+<div class="mb-3">
+  <label for="image" class="form-label">Change Image</label>
+  <input
+    type="file"
+    id="image"
+    name="image"
+    class="form-control"
+    accept="image/*"
+  >
+</div>
+
+
+        <br><br>
+        
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" class="form-control" id="price" name="listing[price]" value="<%= listing.price %>" required>
+        <br><br>
+        
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" class="form-control" id="location" name="listing[location]" value="<%= listing.location %>" required>
+        <br><br>
+        
+        <label for="country" class="form-label">Country:</label>
+        <input type="text" class="form-control" id="country" name="listing[country]" value="<%= listing.country %>" required>
+        <br><br>
+        
+        <button type="submit" class="btn btn-create">Update Listing</button>
+    </form>
+</body>
+</html>

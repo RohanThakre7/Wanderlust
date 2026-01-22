@@ -1,0 +1,62 @@
+<%layout ('./layouts/boilerplate') %>
+<body>
+    <h1 class="offset-4">Create New Listing</h1>
+    
+    <form  action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data" >
+        <div class="row">
+        <div class="col-8 offset-2">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+        <input type="text" id="title" name="listing[title]" class="form-control" required>
+       
+        <div class="invalid-feedback">GIVE TITLE!</div>
+         <br><br>
+        </div>
+        <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" name="listing[description]" class="form-control" required></textarea>
+       
+         <div class="invalid-feedback">GIVE DESCRIPTION!</div>
+          <br><br>
+        </div>
+
+        <div class="mb-3">
+        <label for="image" class="form-label">Image URL:</label>
+        <input type="file" id="image" name="image" class="form-control" accept="image/*" required>
+       
+         <div class="invalid-feedback">GIVE IMAGE URL!</div>
+          <br><br>
+        </div>
+        
+        <div class="row">
+        <div class="col-4"><label for="price" class="form-label" >Price:</label>
+        <input type="number" id="price" name="listing[price]" class="form-control" required>
+       
+         <div class="invalid-feedback">GIVE PRICE!</div>
+          <br><br>
+        </div>
+
+    
+        <div class="col-8">
+        <label for="country" class="form-label">Country:</label>
+        <input type="text" id="country" name="listing[country]" class="form-control" required>
+         <div class="invalid-feedback">GIVE COUNTRY!</div>
+        </div>
+
+        <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" id="location" name="listing[location]" class="form-control" required>
+       
+         <div class="invalid-feedback">GIVE LOCATION!</div>
+          <br><br>
+        </div>
+
+        
+        </div>    
+        </div>
+        </div>
+        
+        <button type="submit" class="btn btn-create offset-5 ">Create Listing</button>
+    </form>
+</body>
+</html>

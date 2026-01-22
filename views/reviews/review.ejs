@@ -1,0 +1,86 @@
+<div class="container mt-5">
+
+    
+    <h4 class="fw-bold mb-4" style="color: rgb(165, 42, 120);">
+        Reviews
+    </h4>
+
+    
+    <div class="mb-5">
+        <form action="/listings/<%= listing._id %>/reviews" method="POST">
+
+          
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Rating</label>
+                <select class="form-select" name="review[rating]" required>
+                    <option value="">Select rating</option>
+                    <option value="1">1 – Poor</option>
+                    <option value="2">2 – Fair</option>
+                    <option value="3">3 – Good</option>
+                    <option value="4">4 – Very Good</option>
+                    <option value="5">5 – Excellent</option>
+                </select>
+            </div>
+
+           
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Comment</label>
+                <textarea 
+                    class="form-control"
+                    name="review[comment]"
+                    rows="3"
+                    placeholder="Write your review..."
+                    required
+                ></textarea>
+            </div>
+
+            
+            <button class="btn text-white"
+                    style="background-color: rgb(165, 42, 120);">
+                Submit Review
+            </button>
+        </form>
+    </div>
+
+    
+    <% if (listing.reviews.length === 0) { %>
+        <p class="text-muted">No reviews yet. Be the first to review.</p>
+    <% } %>
+
+    <div class="row">
+        <% listing.reviews.forEach(review => { %>
+            <div class="col-md-6 mb-3">
+                <div class="border rounded p-3">
+
+                    <p class="text-muted mb-1">
+                        <strong>By:</strong> 
+                        <% if (review.author) { %>
+                            <%= review.author.username %>
+                        <% } else { %>
+                            Unknown User
+                        <% } %>
+                    </p>
+                    <p class="mb-1 fw-semibold">
+                        Rating: <%= review.rating %> / 5
+                    </p>
+
+                    <p class="mb-2">
+                        <%= review.comment %>
+                    </p>
+
+                    <!-- Delete Review -->
+                     <% if (currentUser && review.author && currentUser._id.equals(review.author._id)) { %>
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>/delete?_method=DELETE"
+                          method="POST">
+                        <button class="btn btn-sm btn-outline-danger">
+                            Delete
+                        </button>
+                    </form>
+                    <% } %>
+
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+</div>

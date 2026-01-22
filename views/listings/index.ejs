@@ -1,0 +1,33 @@
+<!-- filepath: d:\Desktop\wanderlust\views\listings\index.ejs -->
+
+<%layout ('./layouts/boilerplate') %>
+<body>
+  <h1>Wanderlust Listings</h1>
+
+  <% if (allListings && allListings.length > 0) { %>
+    
+    <ul class="list-unstyled">
+      <div class="row row-cols-lg-3 ">
+      <% for (let listing of allListings) { %>
+        <li >
+          <a href="/listings/<%= listing._id %>">
+            <div class="card card border-0 shadow-none bg-transparent" style="width: 18rem;">
+                 <img src="<%= listing.image && listing.image.path ? (listing.image.path.startsWith('http') ? listing.image.path : '/' + listing.image.path) : 'https://via.placeholder.com/300' %>" class="card-img-top" alt="...">
+               <div class="card-body">
+                     <h5 class="card-title mb-0"><%= listing.title %></h5>
+                     <h6 class="fw-semibold text-danger mb-0">
+                          $<%= listing.price %></h6>
+                          <h6 ><%= listing.location %></h6>
+             </div>
+            </div>
+          </a>
+        </li>
+      <% } %>
+       </div>
+    </ul>
+   
+  <% } else { %>
+    <p>No listings available at the moment.</p>
+  <% } %>
+</body>
+
