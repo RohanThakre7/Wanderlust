@@ -2,6 +2,8 @@ const User = require("../model/user")
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const { saveRedirectUrl } = require("../middleware");
+
 module.exports.userSignup = async (req, res, next) => {
   try {
     let { username, email, password } = req.body;
@@ -31,7 +33,7 @@ module.exports.userSignup = async (req, res, next) => {
   }
 };
 
-module.exports.userLogin =  passport.authenticate("local", {
+module.exports.userLogin =  saveRedirectUrl,passport.authenticate("local", {
   failureFlash: true,
   failureRedirect: "/login",
 }),async (req, res) => {
