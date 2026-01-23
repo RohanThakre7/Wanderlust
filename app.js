@@ -49,16 +49,16 @@ app.engine("ejs", ejsMate);
 const sessionOptions = {
   secret: SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false, // Changed to false - only save session if user is logged in
   store: MongoStore.create({
     mongoUrl: MONGO_URL,
     touchAfter: 24 * 3600, // lazy session update (only update once per 24 hours)
   }),
   cookie: {
     httpOnly: true,
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     secure: process.env.NODE_ENV === "production", // HTTPS only in production
+    sameSite: 'lax', // CSRF protection
   },
 };
 app.use(session(sessionOptions));

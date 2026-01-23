@@ -1,5 +1,5 @@
 const User = require("../model/user")
-module.exports.userSignup = async (req, res) => {
+module.exports.userSignup = async (req, res, next) => {
   try {
     let { username, email, password } = req.body;
     const newUser = new User({ username, email });
