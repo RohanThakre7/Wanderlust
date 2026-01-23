@@ -8,15 +8,13 @@ const userController = require("../controllers/user");
 router.get("/signup", (req, res) => {
   res.render("users/signup");
 });
-router.post("/signup", wrapAsync(userController.userSignup));
+router.post("/signup",userController.userSignup);
 router.get("/login", (req, res) => {
   res.render("users/login");
 });
 
 router.post(
   "/login",
-  
- 
   userController.userLogin,
 );
 

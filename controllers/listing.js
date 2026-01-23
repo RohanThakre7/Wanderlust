@@ -31,27 +31,18 @@ module.exports.new = (req, res) => {
   res.render("listings/new.ejs");
 };
 module.exports.create = async (req, res) => {
-  try {
-    const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id;
-    if (req.file) {
-      // CloudinaryStorage returns: req.file.path = Cloudinary URL, req.file.filename = public_id
-      console.log("Uploaded file:", req.file); // Debug log
-      newListing.image = {
-        filename: req.file.filename,
-        path: req.file.path, // Cloudinary URL
-      };
-    }
-
-    await newListing.save();
-    req.flash("success", "Successfully made a new listing!");
-    res.redirect(`/listings`);
-  } catch (error) {
-    console.error("Error creating listing:", error);
-    console.error("Error stack:", error.stack);
-    req.flash("error", "Failed to create listing: " + error.message);
-    res.redirect("/listings/new");
+  const newListing = new Listing(req.body.listing);
+  newListing.owner = req.user._id;
+  if (req.file) {
+    newListing.image = {
+      filename: req.file.filename,
+      path: req.file.path,
+    };
   }
+
+  await newListing.save();
+  req.flash("success", "Successfully made a new listing!");
+  res.redirect(`/listings`);
 };
 module.exports.show = async (req, res) => {
   const { id } = req.params;
@@ -84,10 +75,10 @@ module.exports.edit = async (req, res) => {
 module.exports.update = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-  if (req.file) {
+  if (typeof req.file !== "undefined") {
     listing.image = {
       filename: req.file.filename,
-      path: req.file.path, // Cloudinary URL
+      path: req.file.path,
     };
   }
   await listing.save();

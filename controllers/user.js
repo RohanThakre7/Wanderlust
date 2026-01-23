@@ -3,8 +3,9 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const { saveRedirectUrl } = require("../middleware");
-
-module.exports.userSignup = async (req, res, next) => {
+const { isLoggedIn } = require("../middleware");
+const wrapAsync = require("../utils/wrapAsync");
+module.exports.userSignup =  wrapAsync(async (req, res, next) => {
   try {
     let { username, email, password } = req.body;
     const newUser = new User({ username, email });
@@ -31,7 +32,7 @@ module.exports.userSignup = async (req, res, next) => {
     req.flash("error", err.message);
     res.redirect("/signup");
   }
-};
+});
 
 module.exports.userLogin =  saveRedirectUrl,passport.authenticate("local", {
   failureFlash: true,
