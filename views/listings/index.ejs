@@ -3,50 +3,86 @@
 <%layout ('./layouts/boilerplate') %>
 <body>
   <!-- Category Icons and Tax Toggle -->
-  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-    <!-- Category Icons -->
-    <div class="d-flex gap-3 flex-wrap">
-      <a href="/listings?category=trending" class="text-decoration-none text-dark" title="Trending">
-        <i class="fas fa-fire fa-lg"></i>
+  <div class="d-flex align-items-start mb-4 gap-3" style="width: 100%;">
+    <!-- Category Icons - 60% width -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap" style="width: 60%; gap: 1rem;">
+      <a href="/listings?category=trending" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-fire fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Trending</small>
+        </div>
       </a>
-      <a href="/listings?category=rooms" class="text-decoration-none text-dark" title="Rooms">
-        <i class="fas fa-bed fa-lg"></i>
+      <a href="/listings?category=rooms" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-bed fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Rooms</small>
+        </div>
       </a>
-      <a href="/listings?category=cities" class="text-decoration-none text-dark" title="Cities">
-        <i class="fas fa-city fa-lg"></i>
+      <a href="/listings?category=cities" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-city fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Cities</small>
+        </div>
       </a>
-      <a href="/listings?category=beach" class="text-decoration-none text-dark" title="Beach">
-        <i class="fas fa-umbrella-beach fa-lg"></i>
+      <a href="/listings?category=beach" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-umbrella-beach fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Beach</small>
+        </div>
       </a>
-      <a href="/listings?category=mountain" class="text-decoration-none text-dark" title="Mountain">
-        <i class="fas fa-mountain fa-lg"></i>
+      <a href="/listings?category=mountain" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-mountain fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Mountain</small>
+        </div>
       </a>
-      <a href="/listings?category=pool" class="text-decoration-none text-dark" title="Pool">
-        <i class="fas fa-swimming-pool fa-lg"></i>
+      <a href="/listings?category=pool" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-swimming-pool fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Pool</small>
+        </div>
       </a>
-      <a href="/listings?category=camping" class="text-decoration-none text-dark" title="Camping">
-        <i class="fas fa-campground fa-lg"></i>
+      <a href="/listings?category=camping" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-campground fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Camping</small>
+        </div>
       </a>
-      <a href="/listings?category=castle" class="text-decoration-none text-dark" title="Castle">
-        <i class="fas fa-castle fa-lg"></i>
+      <a href="/listings?category=castle" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-castle fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Castle</small>
+        </div>
       </a>
-      <a href="/listings?category=treehouse" class="text-decoration-none text-dark" title="Treehouse">
-        <i class="fas fa-tree fa-lg"></i>
+      <a href="/listings?category=treehouse" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-tree fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Treehouse</small>
+        </div>
       </a>
-      <a href="/listings?category=cabin" class="text-decoration-none text-dark" title="Cabin">
-        <i class="fas fa-home fa-lg"></i>
+      <a href="/listings?category=cabin" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-home fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Cabin</small>
+        </div>
       </a>
-      <a href="/listings?category=island" class="text-decoration-none text-dark" title="Island">
-        <i class="fas fa-island-tropical fa-lg"></i>
+      <a href="/listings?category=island" class="text-decoration-none text-dark text-center" style="flex: 0 0 auto;">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-island-tropical fa-2x mb-2" style="color: #fe424d;"></i>
+          <small class="text-muted">Island</small>
+        </div>
       </a>
     </div>
 
-    <!-- Tax Toggle Switch -->
-    <div class="form-check form-switch d-flex align-items-center gap-2">
-      <label class="form-check-label" for="taxToggle">
-        <small>Show prices with tax</small>
+    <!-- Gap - 10% -->
+    <div style="width: 10%;"></div>
+
+    <!-- Tax Toggle Switch - 30% width -->
+    <div class="form-check form-switch d-flex flex-column align-items-center justify-content-center border rounded p-3" style="width: 30%; background-color: #f8f9fa;">
+      <label class="form-check-label mb-2 fw-semibold" for="taxToggle" style="color: #333;">
+        Show prices with tax
       </label>
-      <input class="form-check-input" type="checkbox" role="switch" id="taxToggle">
+      <input class="form-check-input" type="checkbox" role="switch" id="taxToggle" style="width: 3rem; height: 1.5rem; cursor: pointer;">
     </div>
   </div>
 
