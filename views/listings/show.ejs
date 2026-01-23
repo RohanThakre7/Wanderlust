@@ -42,7 +42,7 @@
                     </p>
 
                     <!-- Price -->
-                    <p class="fw-semibold text-danger mb-3">
+                    <p class="fw-semibold mb-3" style="color: #fe424d;">
                         ₹ <%= listing.price %>
                     </p>
 
@@ -61,7 +61,7 @@
                         </a>
 
                         <form action="/listings/<%=listing._id%>/delete?_method=DELETE" method="POST">
-                            <button class="btn btn-outline-danger btn-sm">
+                            <button class="btn btn-sm" style="border-color: #fe424d; color: #fe424d;" onmouseover="this.style.backgroundColor='#fe424d'; this.style.color='#ffffff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fe424d';">
                                 Delete
                             </button>
                         </form>

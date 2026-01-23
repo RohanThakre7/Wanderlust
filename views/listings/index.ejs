@@ -2,7 +2,53 @@
 
 <%layout ('./layouts/boilerplate') %>
 <body>
-  <h1>Wanderlust Listings</h1>
+  <!-- Category Icons and Tax Toggle -->
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+    <!-- Category Icons -->
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="/listings?category=trending" class="text-decoration-none text-dark" title="Trending">
+        <i class="fas fa-fire fa-lg"></i>
+      </a>
+      <a href="/listings?category=rooms" class="text-decoration-none text-dark" title="Rooms">
+        <i class="fas fa-bed fa-lg"></i>
+      </a>
+      <a href="/listings?category=cities" class="text-decoration-none text-dark" title="Cities">
+        <i class="fas fa-city fa-lg"></i>
+      </a>
+      <a href="/listings?category=beach" class="text-decoration-none text-dark" title="Beach">
+        <i class="fas fa-umbrella-beach fa-lg"></i>
+      </a>
+      <a href="/listings?category=mountain" class="text-decoration-none text-dark" title="Mountain">
+        <i class="fas fa-mountain fa-lg"></i>
+      </a>
+      <a href="/listings?category=pool" class="text-decoration-none text-dark" title="Pool">
+        <i class="fas fa-swimming-pool fa-lg"></i>
+      </a>
+      <a href="/listings?category=camping" class="text-decoration-none text-dark" title="Camping">
+        <i class="fas fa-campground fa-lg"></i>
+      </a>
+      <a href="/listings?category=castle" class="text-decoration-none text-dark" title="Castle">
+        <i class="fas fa-castle fa-lg"></i>
+      </a>
+      <a href="/listings?category=treehouse" class="text-decoration-none text-dark" title="Treehouse">
+        <i class="fas fa-tree fa-lg"></i>
+      </a>
+      <a href="/listings?category=cabin" class="text-decoration-none text-dark" title="Cabin">
+        <i class="fas fa-home fa-lg"></i>
+      </a>
+      <a href="/listings?category=island" class="text-decoration-none text-dark" title="Island">
+        <i class="fas fa-island-tropical fa-lg"></i>
+      </a>
+    </div>
+
+    <!-- Tax Toggle Switch -->
+    <div class="form-check form-switch d-flex align-items-center gap-2">
+      <label class="form-check-label" for="taxToggle">
+        <small>Show prices with tax</small>
+      </label>
+      <input class="form-check-input" type="checkbox" role="switch" id="taxToggle">
+    </div>
+  </div>
 
   <% if (allListings && allListings.length > 0) { %>
     
@@ -10,13 +56,14 @@
       <div class="row row-cols-lg-3 ">
       <% for (let listing of allListings) { %>
         <li >
-          <a href="/listings/<%= listing._id %>">
+          <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
             <div class="card card border-0 shadow-none bg-transparent" style="width: 18rem;">
                  <img src="<%= listing.image && listing.image.path ? (listing.image.path.startsWith('http') ? listing.image.path : '/' + listing.image.path) : 'https://via.placeholder.com/300' %>" class="card-img-top" alt="...">
                <div class="card-body">
                      <h5 class="card-title mb-0"><%= listing.title %></h5>
-                     <h6 class="fw-semibold text-danger mb-0">
-                          $<%= listing.price %></h6>
+                     <h6 class="fw-semibold mb-0 price-display" data-price="<%= listing.price %>" style="color: #fe424d;">
+                          $<span class="base-price"><%= listing.price %></span>
+                     </h6>
                           <h6 ><%= listing.location %></h6>
              </div>
             </div>
@@ -29,5 +76,37 @@
   <% } else { %>
     <p>No listings available at the moment.</p>
   <% } %>
+
+  <script>
+    // Tax toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const taxToggle = document.getElementById('taxToggle');
+      const priceDisplays = document.querySelectorAll('.price-display');
+      
+      // Generate random tax percentage between 8% and 15%
+      function getRandomTax() {
+        return (Math.random() * 7 + 8).toFixed(2); // 8% to 15%
+      }
+      
+      function updatePrices() {
+        priceDisplays.forEach(priceDisplay => {
+          const basePrice = parseFloat(priceDisplay.getAttribute('data-price'));
+          const basePriceSpan = priceDisplay.querySelector('.base-price');
+          
+          if (taxToggle.checked) {
+            const taxPercent = getRandomTax();
+            const taxAmount = (basePrice * taxPercent / 100).toFixed(2);
+            const totalPrice = (basePrice + parseFloat(taxAmount)).toFixed(2);
+            
+            basePriceSpan.innerHTML = `${totalPrice} <small class="text-muted">(+$${taxAmount} tax)</small>`;
+          } else {
+            basePriceSpan.textContent = basePrice;
+          }
+        });
+      }
+      
+      taxToggle.addEventListener('change', updatePrices);
+    });
+  </script>
 </body>
 

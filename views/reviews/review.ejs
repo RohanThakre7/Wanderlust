@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
     
-    <h4 class="fw-bold mb-4" style="color: rgb(165, 42, 120);">
+    <h4 class="fw-bold mb-4" style="color: #fe424d;">
         Reviews
     </h4>
 
@@ -36,7 +36,7 @@
 
             
             <button class="btn text-white"
-                    style="background-color: rgb(165, 42, 120);">
+                    style="background-color: #fe424d;">
                 Submit Review
             </button>
         </form>
@@ -72,7 +72,7 @@
                      <% if (currentUser && review.author && currentUser._id.equals(review.author._id)) { %>
                     <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>/delete?_method=DELETE"
                           method="POST">
-                        <button class="btn btn-sm btn-outline-danger">
+                        <button class="btn btn-sm" style="border-color: #fe424d; color: #fe424d;" onmouseover="this.style.backgroundColor='#fe424d'; this.style.color='#ffffff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fe424d';">
                             Delete
                         </button>
                     </form>
