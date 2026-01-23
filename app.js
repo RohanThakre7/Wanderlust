@@ -1,8 +1,3 @@
-// Load environment variables FIRST before any other modules that need them
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -23,6 +18,10 @@ const userRouter = require("./routes/user");
 const { isLoggedIn } = require("./middleware");
 const { validateListing } = require("./middleware");
 const { validateReview } = require("./middleware");
+
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 // Environment variables
 const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
@@ -80,7 +79,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/", (req, res) => res.redirect("/listings"));
 app.use("/listings", listings);
 app.use("/", userRouter);
 app.use("/listings/:id/reviews", reviews);
