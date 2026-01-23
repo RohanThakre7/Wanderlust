@@ -28,6 +28,7 @@ router
   .route("/:id")
   .get(wrapAsync(listingController.show))
   .put(
+    isLoggedIn,
     upload.single("image"),
     validateListing,
     wrapAsync(listingController.update),
@@ -35,9 +36,9 @@ router
 
 //edit & update
 
-router.get("/:id/edit", wrapAsync(listingController.edit));
+router.get("/:id/edit", isLoggedIn, wrapAsync(listingController.edit));
 
 //delete
-router.delete("/:id/delete", wrapAsync(listingController.delete));
+router.delete("/:id/delete", isLoggedIn, wrapAsync(listingController.delete));
 
 module.exports = router;

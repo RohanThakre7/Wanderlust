@@ -1,10 +1,18 @@
 const Listing = require("../model/listing");
 
+const { reviewSchema } = require("../schema");
+const express = require("express");
+const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 const { listingSchema } = require("../schema");
-const { reviewSchema } = require("../schema");
 const mongoose = require("mongoose");
+const { isLoggedIn } = require("../middleware");
+const { validateListing } = require("../middleware");
+const listingController = require("../controllers/listing");
+const multer = require("multer");
+const { storage } = require("../cloudinary");
+const upload = multer({ storage });
 
 module.exports.index = async (req, res) => {
   const { q } = req.query;
