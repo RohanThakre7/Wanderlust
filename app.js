@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
@@ -28,7 +28,7 @@ const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust
 const SESSION_SECRET = process.env.SESSION_SECRET || "thisshouldbeabettersecret!";
 const port = process.env.PORT || 3000;
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 main()
   .then(() => console.log("Main function executed successfully"))
