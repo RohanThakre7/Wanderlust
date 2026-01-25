@@ -2,8 +2,7 @@ const User = require("../model/user")
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const { saveRedirectUrl } = require("../middleware");
-const { isLoggedIn } = require("../middleware");
+
 const wrapAsync = require("../utils/wrapAsync");
 
 
@@ -36,7 +35,7 @@ module.exports.userSignup =  wrapAsync(async (req, res, next) => {
   }
 });
 
-module.exports.userLogin =  saveRedirectUrl,async (req, res) => {
+module.exports.userLogin = (req, res) => {
   req.flash("success", "Welcome back!");
   const redirectUrl = res.locals.redirectUrl || "/listings";
   res.redirect(redirectUrl);
