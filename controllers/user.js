@@ -36,13 +36,10 @@ module.exports.userSignup =  wrapAsync(async (req, res, next) => {
   }
 });
 
-module.exports.userLogin =  saveRedirectUrl,passport.authenticate("local", {
-  failureFlash: true,
-  failureRedirect: "/login",
-}),async (req, res) => {
+module.exports.userLogin =  saveRedirectUrl,async (req, res) => {
   req.flash("success", "Welcome back!");
-  const redirectedUrl = res.locals.redirectUrl || "/listings";
-  res.redirect(redirectedUrl);
+  const redirectUrl = res.locals.redirectUrl || "/listings";
+  res.redirect(redirectUrl);
 };
 
 module.exports.userLogout = (req, res, next) => {
