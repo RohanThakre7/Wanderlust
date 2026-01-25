@@ -5,6 +5,8 @@ const LocalStrategy = require("passport-local");
 const { saveRedirectUrl } = require("../middleware");
 const { isLoggedIn } = require("../middleware");
 const wrapAsync = require("../utils/wrapAsync");
+
+
 module.exports.userSignup =  wrapAsync(async (req, res, next) => {
   try {
     let { username, email, password } = req.body;
@@ -39,8 +41,8 @@ module.exports.userLogin =  saveRedirectUrl,passport.authenticate("local", {
   failureRedirect: "/login",
 }),async (req, res) => {
   req.flash("success", "Welcome back!");
-  const redirectUrl = res.locals.redirectUrl || "/listings";
-  res.redirect(redirectUrl);
+  const redirectedUrl = res.locals.redirectUrl || "/listings";
+  res.redirect(redirectedUrl);
 };
 
 module.exports.userLogout = (req, res, next) => {
