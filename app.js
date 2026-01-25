@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
@@ -24,11 +24,13 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // Environment variables
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
-const SESSION_SECRET = process.env.SESSION_SECRET || "thisshouldbeabettersecret!";
+const MONGO_URL =
+  process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
+const SESSION_SECRET =
+  process.env.SESSION_SECRET || "thisshouldbeabettersecret!";
 const port = process.env.PORT || 3000;
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
 main()
   .then(() => console.log("Main function executed successfully"))
@@ -57,8 +59,8 @@ const sessionOptions = {
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-    secure: process.env.NODE_ENV === "production", // HTTPS only in production
-    sameSite: 'lax', // CSRF protection
+    secure: false, // HTTPS only in production
+    sameSite: "lax", // CSRF protection
   },
 };
 app.use(session(sessionOptions));
