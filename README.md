@@ -51,6 +51,9 @@ This project focuses on building a complete CRUD application with authentication
 * Connect Flash
 
 ---
+<img width="1290" height="852" alt="Screenshot 2026-04-11 153038" src="https://github.com/user-attachments/assets/48afe11d-a6ea-421b-93c1-f5e43ec99b42" />
+
+
 
 ## 📌 Key Highlights
 
@@ -61,6 +64,8 @@ This project focuses on building a complete CRUD application with authentication
 * MVC folder structure
 * Clean and minimal UI
 * Deployed on Render
+
+<img width="1427" height="706" alt="Screenshot 2026-04-11 153150" src="https://github.com/user-attachments/assets/0a975344-82b0-4ffe-8c74-8a2af30480e2" />
 
 ---
 
